@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  DEINE PERSÖNLICHE WEBSEITE  –  Startvorlage
+  ============================================================
+  So funktioniert diese Datei:
+  - Alles zwischen <!-- ... --> sind Kommentare. Sie sind für dich,
+    nicht für Besucher, und werden nicht angezeigt.
+  - Suche nach dem Wort "HIER:" – das sind die Stellen, die du
+    mit deinen eigenen Texten ersetzen sollst.
+  - Zum Ansehen: Datei einfach doppelklicken -> öffnet im Browser.
+  - Zum Bearbeiten: Datei in einem Texteditor öffnen (VS Code,
+    Notepad++, oder zur Not der normale Editor).
+  ============================================================
+-->
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <!-- Sorgt dafür, dass die Seite auch auf dem Handy gut aussieht -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- HIER: Der Titel im Browser-Tab -->
+  <title>Dein Name – Persönliche Seite</title>
+
+  <style>
+    /* ========================================================
+       FARBEN & GRUNDEINSTELLUNGEN
+       Die Werte hinter "--" kannst du hier zentral ändern,
+       dann ändert sich die ganze Seite. Probier's ruhig aus!
+       ======================================================== */
+    :root {
+      --bg:     #FBFAF8;   /* Hintergrund (warmes Off-White) */
+      --ink:    #1C2230;   /* Haupttextfarbe (dunkles Schiefer-Blau) */
+      --muted:  #6B7180;   /* Nebentext, gedämpft */
+      --accent: #2F55E0;   /* Akzentfarbe (Elektro-Blau) */
+      --line:   #E7E4DD;   /* dünne Trennlinien */
+      --maxw:   680px;     /* maximale Textbreite */
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Zentrierter Inhaltsbereich mit Luft an den Rändern */
+    .wrap {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 72px 24px 96px;
+    }
+
+    /* --- Kleine "Eyebrow"-Beschriftung über Überschriften --- */
+    .eyebrow {
+      font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 0 0 12px;
+    }
+
+    /* --- Der große Name oben (Hero) --- */
+    h1 {
+      font-size: clamp(2.2rem, 6vw, 3.2rem);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin: 0 0 16px;
+      font-weight: 700;
+    }
+    /* Der farbige Punkt hinter dem Namen ist das kleine Erkennungszeichen */
+    h1 .dot { color: var(--accent); }
+
+    .lede {
+      font-size: 1.2rem;
+      color: var(--muted);
+      margin: 0 0 28px;
+    }
+
+    /* Kleine Info-Zeile (z. B. Ort / Studium) in Monospace */
+    .meta {
+      font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.85rem;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      padding-top: 20px;
+    }
+
+    /* --- Abschnitte --- */
+    section { margin-top: 56px; }
+    h2 {
+      font-size: 1.35rem;
+      margin: 0 0 14px;
+      letter-spacing: -0.01em;
+    }
+    p { margin: 0 0 16px; }
+
+    /* --- Liste (z. B. Interessen / Fähigkeiten) --- */
+    ul.tags {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    ul.tags li {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 6px 14px;
+      font-size: 0.9rem;
+      color: var(--ink);
+      background: #fff;
+    }
+
+    /* --- Links --- */
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .links a {
+      display: inline-block;
+      margin-right: 18px;
+      font-weight: 600;
+    }
+
+    footer {
+      margin-top: 72px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+
+    <!-- ============ HERO / KOPFBEREICH ============ -->
+    <p class="eyebrow">Persönliche Seite</p>
+
+    <!-- HIER: Dein Name -->
+    <h1>Dein Name<span class="dot">.</span></h1>
+
+    <!-- HIER: Ein Satz, der dich beschreibt -->
+    <p class="lede">
+      Ein Satz darüber, wer du bist und was dich ausmacht –
+      z. B. „Elektrotechnik-Student aus Bochum, begeistert von
+      Energienetzen und selbstgebauten Projekten.“
+    </p>
+
+    <!-- HIER: Kurze Fakten. Trenne sie mit dem senkrechten Strich | -->
+    <p class="meta">
+      Bochum, DE &nbsp;|&nbsp; Elektrotechnik (B.Eng.) &nbsp;|&nbsp; seit 2026 online
+    </p>
+
+    <!-- ============ ÜBER MICH ============ -->
+    <section>
+      <h2>Über mich</h2>
+      <!-- HIER: Zwei, drei Sätze über dich. Ganz locker. -->
+      <p>
+        Hier kannst du ein bisschen ausholen: Was studierst oder machst du?
+        Was interessiert dich? Woran arbeitest du gerade? Es muss nicht
+        perfekt sein – schreib so, wie du auch reden würdest.
+      </p>
+      <p>
+        Ein zweiter Absatz ist optional. Du kannst diesen ganzen Block
+        auch löschen, wenn dir ein Absatz reicht.
+      </p>
+    </section>
+
+    <!-- ============ INTERESSEN / FÄHIGKEITEN ============ -->
+    <section>
+      <h2>Interessen &amp; Themen</h2>
+      <!-- HIER: Ersetze die Stichwörter. Zeilen hinzufügen/löschen nach Belieben. -->
+      <ul class="tags">
+        <li>Elektrotechnik</li>
+        <li>Energienetze</li>
+        <li>Programmieren</li>
+        <li>Basteln &amp; Prototypen</li>
+        <li>Fotografie</li>
+      </ul>
+    </section>
+
+    <!-- ============ KONTAKT ============ -->
+    <section>
+      <h2>Kontakt</h2>
+      <p>Schreib mir gern – am einfachsten per E-Mail.</p>
+      <!-- HIER: Deine echten Links eintragen.
+           Bei der E-Mail bleibt "mailto:" davor stehen. -->
+      <p class="links">
+        <a href="mailto:deine@email.de">E-Mail</a>
+        <a href="https://github.com/deinname" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://linkedin.com/in/deinname" target="_blank" rel="noopener">LinkedIn</a>
+      </p>
+    </section>
+
+    <!-- ============ FUSSZEILE ============ -->
+    <footer>
+      <!-- HIER: Jahr und Name anpassen -->
+      © 2026 Dein Name · Gebaut zum Üben mit HTML &amp; CSS
+    </footer>
+
+  </div>
+</body>
+</html>
