@@ -129,6 +129,18 @@
       font-weight: 600;
     }
 
+    /* --- Download-Button (gefüllt, in Akzentfarbe) --- */
+    .button {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      padding: 11px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    .button:hover { text-decoration: none; opacity: 0.9; }
+
     footer {
       margin-top: 72px;
       padding-top: 20px;
@@ -171,6 +183,19 @@
         <li>Thema 2</li>
         <li>Thema 3</li>
       </ul>
+    </section>
+
+    <!-- ============ LEBENSLAUF ============ -->
+    <section>
+      <h2>Lebenslauf</h2>
+      <p>Meinen Lebenslauf gibt es hier als PDF zum Herunterladen.</p>
+      <!-- HIER: Lade deine PDF ins Repo (z. B. als "lebenslauf.pdf") und
+           trage unten bei href genau diesen Dateinamen ein.
+           Das "download" sorgt dafür, dass die Datei heruntergeladen
+           statt im Browser geöffnet wird. -->
+      <p>
+        <a class="button" href="lebenslauf.pdf" download>Lebenslauf herunterladen (PDF)</a>
+      </p>
     </section>
 
     <!-- ============ KONTAKT ============ -->
