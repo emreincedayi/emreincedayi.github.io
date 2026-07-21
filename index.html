@@ -35,10 +35,32 @@
       --muted:  #6B7180;   /* Nebentext, gedämpft */
       --accent: #2F55E0;   /* Akzentfarbe (Elektro-Blau) */
       --line:   #E7E4DD;   /* dünne Trennlinien */
+      --card:   #FFFFFF;   /* Fläche für die Schlagwort-"Pillen" */
+      --btn-text: #FFFFFF; /* Schriftfarbe auf dem Button */
       --maxw:   680px;     /* maximale Textbreite */
     }
 
+    /* ========================================================
+       DARK MODE
+       Dieser Block gilt automatisch, wenn das Gerät auf
+       "dunkles Design" gestellt ist. Es werden NUR die Farben
+       von oben überschrieben – der Rest der Seite bleibt gleich.
+       ======================================================== */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg:     #14171F;   /* dunkler Hintergrund */
+        --ink:    #E8E9ED;   /* heller Haupttext */
+        --muted:  #9AA0AD;   /* gedämpfter Nebentext */
+        --accent: #7D97FF;   /* etwas helleres Blau, damit es auf Dunkel lesbar bleibt */
+        --line:   #2A2E38;   /* dezente Trennlinien */
+        --card:   #1D212B;   /* dunkle Fläche für die "Pillen" */
+        --btn-text: #14171F; /* dunkle Schrift, gut lesbar auf hellem Blau */
+      }
+    }
+
     * { box-sizing: border-box; }
+
+    html { color-scheme: light dark; }
 
     body {
       margin: 0;
@@ -116,7 +138,7 @@
       padding: 6px 14px;
       font-size: 0.9rem;
       color: var(--ink);
-      background: #fff;
+      background: var(--card);
     }
 
     /* --- Links --- */
@@ -133,7 +155,7 @@
     .button {
       display: inline-block;
       background: var(--accent);
-      color: #fff;
+      color: var(--btn-text);
       padding: 11px 20px;
       border-radius: 8px;
       font-weight: 600;
