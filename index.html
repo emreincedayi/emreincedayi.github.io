@@ -168,6 +168,35 @@
     }
     .button:hover { text-decoration: none; opacity: 0.9; }
 
+    /* --- Projekt-Karten --- */
+    .projects {
+      display: grid;
+      gap: 16px;
+    }
+    .project {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 20px 22px;
+      background: var(--card);
+    }
+    .project h3 {
+      margin: 0 0 6px;
+      font-size: 1.1rem;
+      letter-spacing: -0.01em;
+    }
+    .project .desc {
+      margin: 0 0 14px;
+      color: var(--muted);
+    }
+    /* Kleine Werkzeug-Angabe in Monospace */
+    .project .stack {
+      font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin: 0 0 12px;
+    }
+    .project a.more { font-weight: 600; font-size: 0.9rem; }
+
     footer {
       margin-top: 72px;
       padding-top: 20px;
@@ -210,6 +239,50 @@
         <li>Thema 2</li>
         <li>Thema 3</li>
       </ul>
+    </section>
+
+    <!-- ============ PROJEKTE ============ -->
+    <section>
+      <h2>Projekte</h2>
+      <!-- HIER: Ersetze die Platzhalter mit echten Projekten.
+           Eine Karte kopieren = ein weiteres Projekt.
+           Karten löschen = weniger Projekte. -->
+      <div class="projects">
+
+        <!-- Projekt 1 -->
+        <div class="project">
+          <h3>Projektname eins</h3>
+          <p class="desc">
+            Kurze Beschreibung in ein, zwei Sätzen: Was ist das Projekt,
+            was war die Aufgabe, und was hast du dabei gemacht?
+          </p>
+          <p class="stack">Werkzeuge: Platzhalter, Platzhalter</p>
+          <a class="more" href="#">Mehr dazu →</a>
+        </div>
+
+        <!-- Projekt 2 -->
+        <div class="project">
+          <h3>Projektname zwei</h3>
+          <p class="desc">
+            Noch ein Platzhalter-Text. Beschreibe hier ruhig auch, was
+            du daraus gelernt hast oder was das Besondere daran war.
+          </p>
+          <p class="stack">Werkzeuge: Platzhalter, Platzhalter</p>
+          <a class="more" href="#">Mehr dazu →</a>
+        </div>
+
+        <!-- Projekt 3 -->
+        <div class="project">
+          <h3>Projektname drei</h3>
+          <p class="desc">
+            Ein drittes Beispiel. Wenn du kein drittes Projekt hast,
+            lösch diese Karte einfach – zwei reichen völlig.
+          </p>
+          <p class="stack">Werkzeuge: Platzhalter, Platzhalter</p>
+          <a class="more" href="#">Mehr dazu →</a>
+        </div>
+
+      </div>
     </section>
 
     <!-- ============ LEBENSLAUF ============ -->
