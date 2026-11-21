@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  DEINE PERSÖNLICHE WEBSEITE  –  Design "Kupfer auf Papier"
+  ============================================================
+  So funktioniert diese Datei:
+  - Text, der mit spitzer Klammer, Ausrufezeichen und zwei Bindestrichen
+    beginnt und ebenso endet, ist ein Kommentar. Kommentare sind für dich,
+    nicht für Besucher, und werden nicht angezeigt.
+  - Suche nach dem Wort "HIER:" – das sind die Stellen, die du
+    mit deinen eigenen Texten ersetzen sollst.
+  - Zum Ansehen: Datei einfach doppelklicken, sie öffnet im Browser.
+  - Zum Bearbeiten: Datei in einem Texteditor öffnen (VS Code,
+    Notepad++, oder zur Not der normale Editor).
+  - Die Schriften liegen im Ordner "fonts" direkt neben dieser Datei.
+    Der Ordner muss mit ins Repo, sonst fällt die Seite auf
+    Standardschriften zurück.
+  ============================================================
+-->
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <!-- Sorgt dafür, dass die Seite auch auf dem Handy gut aussieht -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- HIER: Der Titel im Browser-Tab -->
+  <title>Emre Incedayi – Persönliche Seite</title>
+
+  <!-- Favicon (Symbol im Browser-Tab). SVG zuerst, PNG als Fallback. -->
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <!-- Beschreibung für Suchmaschinen (erscheint unter dem Titel bei Google) -->
+  <meta name="description" content="Persönliche Seite von Emre Incedayi – Elektrotechnik-Student. Projekte, Lebenslauf und Kontakt.">
+
+  <!-- Farbe der Browser-Leiste auf dem Handy (hell und dunkel) -->
+  <meta name="theme-color" content="#F0EDE5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#181714" media="(prefers-color-scheme: dark)">
+
+  <!-- Open Graph: Vorschau beim Teilen des Links (WhatsApp, LinkedIn, Discord …) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Emre Incedayi">
+  <meta property="og:description" content="Persönliche Seite – Projekte, Lebenslauf und Kontakt.">
+  <meta property="og:url" content="https://emreincedayi.github.io">
+  <meta property="og:image" content="https://emreincedayi.github.io/og-image.png">
+
+  <!-- Gleiche Vorschau speziell für X/Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Die Schriften schon früh laden, damit nichts "springt" -->
+  <link rel="preload" href="fonts/newsreader.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/instrument-sans.woff2" as="font" type="font/woff2" crossorigin>
+
+  <style>
+    /* ========================================================
+       SCHRIFTEN
+       Beide Schriften liegen im eigenen Repo (Ordner "fonts")
+       statt bei Google. So werden keine Besucherdaten an
+       Google übertragen – wichtig wegen der DSGVO.
+       - Newsreader: Serifenschrift für Name & Überschriften
+       - Instrument Sans: ruhige Schrift für den Fließtext
+       ======================================================== */
+    @font-face {
+      font-family: "Newsreader";
+      src: url("fonts/newsreader.woff2") format("woff2");
+      font-weight: 200 800;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Instrument Sans";
+      src: url("fonts/instrument-sans.woff2") format("woff2");
+      font-weight: 400 700;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    /* ========================================================
+       FARBEN & GRUNDEINSTELLUNGEN
+       Die Werte hinter "--" kannst du hier zentral ändern,
+       dann ändert sich die ganze Seite. Probier's ruhig aus!
+       ======================================================== */
+    :root {
+      --bg:       #F0EDE5;   /* Hintergrund: warmes Papier */
+      --ink:      #1A1916;   /* Haupttext: fast Schwarz */
+      --muted:    #6B665C;   /* Nebentext: warmes Grau */
+      --line:     #D8D2C5;   /* feine Trennlinien */
+      --accent:   #9C4F2A;   /* Akzent: Kupfer – für Links und die Leiterbahn */
+      --btn-bg:   #1A1916;   /* Button-Fläche */
+      --btn-text: #F0EDE5;   /* Schrift auf dem Button */
+
+      --serif: "Newsreader", "Iowan Old Style", Georgia, serif;
+      --sans:  "Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+      --maxw:   820px;   /* maximale Breite der ganzen Seite */
+      --gutter: 48px;    /* linker Rand, in dem die Leiterbahn läuft */
+      --label:  150px;   /* Breite der Spalte mit den Abschnittstiteln */
+      --gap:    88px;    /* Abstand zwischen den Abschnitten */
+      --h1:     clamp(2.9rem, 8vw, 4.6rem);  /* Größe des Namens */
+    }
+
+    /* ========================================================
+       DARK MODE
+       Gilt automatisch, wenn das Gerät auf "dunkles Design"
+       gestellt ist. Es werden NUR die Farben überschrieben.
+       ======================================================== */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg:       #181714;   /* warmes Fast-Schwarz */
+        --ink:      #ECE8DF;   /* Text in Papierfarbe */
+        --muted:    #A39E93;
+        --line:     #34312B;
+        --accent:   #E0946A;   /* helleres Kupfer, damit es auf Dunkel leuchtet */
+        --btn-bg:   #ECE8DF;
+        --btn-text: #181714;
+      }
+    }
+
+    /* Rahmen zählen zur Größe dazu – auch bei den Pads (::before/::after) */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { color-scheme: light dark; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 1.0625rem;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    /* Zentrierter Seitenbereich mit Luft an den Rändern */
+    .page {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 88px 32px 64px;
+    }
+
+    p { margin: 0 0 16px; }
+    p:last-child { margin-bottom: 0; }
+
+    /* ========================================================
+       DIE LEITERBAHN
+       Eine dünne Kupferlinie links, wie eine Leiterbahn auf
+       einer Platine. Jeder Abschnitt hat ein kleines rundes
+       "Pad" (eine Durchkontaktierung). Die Linie zeichnet sich
+       beim Laden einmal von oben nach unten.
+       Neue Abschnitte bekommen automatisch ein Pad.
+       ======================================================== */
+    .circuit {
+      position: relative;
+      overflow: hidden;      /* schneidet die Linie unten sauber ab */
+      padding: 16px 0 8px;
+    }
+    /* die Linie selbst. Wichtig: nur ganze Pixelwerte, sonst runden
+       Browser Linie und Pads unterschiedlich und sie stehen schief.
+       Linie 2px breit bei 5px = Mitte bei 6px = Mitte der 12px-Pads. */
+    .circuit::before {
+      content: "";
+      position: absolute;
+      left: 5px;
+      width: 2px;
+      top: calc(16px + var(--h1) * 0.44);
+      bottom: 0;
+      background: var(--accent);
+      transform-origin: top;
+      animation: trace 1.8s cubic-bezier(0.65, 0, 0.35, 1) 0.25s both;
+    }
+    @keyframes trace {
+      from { transform: scaleY(0); }
+      to   { transform: scaleY(1); }
+    }
+
+    /* Jeder Abschnitt: links der Titel, rechts der Inhalt */
+    .node {
+      position: relative;
+      padding-left: var(--gutter);
+      display: grid;
+      grid-template-columns: var(--label) minmax(0, 1fr);
+      column-gap: 32px;
+      align-items: baseline;   /* Titel und erste Textzeile auf einer Linie */
+    }
+    .node + .node { margin-top: var(--gap); }
+
+    /* Das Pad: ein Kupferring links neben jedem Titel */
+    .node > h1, .node > h2 { position: relative; }
+    .node > h1::before,
+    .node > h2::before {
+      content: "";
+      position: absolute;
+      z-index: 2;
+      left: calc(-1 * var(--gutter));
+      top: calc(0.65em - 6px);
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 2px solid var(--accent);
+      background: var(--bg);
+    }
+    /* Start-Pad beim Namen: gefüllt */
+    .node > h1::before {
+      top: calc(0.44em - 6px);
+      background: var(--accent);
+    }
+    /* End-Pad beim letzten Abschnitt: füllt sich, wenn die Linie ankommt */
+    .node:last-child > h2::before {
+      animation: pad-fill 0.3s ease-out 1.75s both;
+    }
+    @keyframes pad-fill {
+      from { background: var(--bg); }
+      to   { background: var(--accent); }
+    }
+    /* Unter dem letzten Pad wird die Linie verdeckt */
+    .node:last-child > h2::after {
+      content: "";
+      position: absolute;
+      z-index: 1;
+      left: calc(-1 * var(--gutter));
+      top: 0.65em;
+      width: 12px;
+      height: 2000px;
+      background: var(--bg);
+    }
+
+    /* ========================================================
+       KOPFBEREICH: Name und ein Satz über dich
+       ======================================================== */
+    .hero { display: block; }
+    h1 {
+      font-family: var(--serif);
+      font-size: var(--h1);
+      font-weight: 400;
+      line-height: 1;
+      letter-spacing: -0.025em;
+      margin: 0 0 28px;
+    }
+    .lede {
+      font-family: var(--serif);
+      font-size: clamp(1.4rem, 3vw, 1.75rem);
+      line-height: 1.35;
+      letter-spacing: -0.005em;
+      max-width: 30em;
+      margin: 0;
+    }
+    .hero + .node { margin-top: 112px; }
+
+    /* ========================================================
+       ABSCHNITTSTITEL (linke Spalte)
+       ======================================================== */
+    h2 {
+      font-family: var(--serif);
+      font-size: 1.375rem;
+      font-weight: 400;
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+      margin: 0;
+    }
+
+    /* ========================================================
+       PROJEKTE: eine ruhige Liste mit feinen Linien
+       ======================================================== */
+    .projects {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .project + .project {
+      border-top: 1px solid var(--line);
+      margin-top: 28px;
+      padding-top: 28px;
+    }
+    .project h3 {
+      font-family: var(--serif);
+      font-size: 1.375rem;
+      font-weight: 500;
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+      margin: 0 0 8px;
+    }
+    .project .desc { margin: 0 0 10px; }
+    /* Kleine Werkzeug-Angabe */
+    .project .stack {
+      font-size: 0.875rem;
+      color: var(--muted);
+      margin: 0 0 12px;
+    }
+    .project .more { font-weight: 500; font-size: 0.9375rem; }
+
+    /* ========================================================
+       LINKS & BUTTON
+       ======================================================== */
+    a {
+      color: var(--accent);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.22em;
+      text-decoration-color: color-mix(in srgb, var(--accent) 35%, transparent);
+    }
+    a:hover { text-decoration-color: var(--accent); }
+
+    /* Sichtbarer Rahmen, wenn man mit der Tab-Taste durch die Links springt */
+    a:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 3px;
+    }
+
+    /* Download-Button: dunkel, beim Drüberfahren Kupfer */
+    .button {
+      display: inline-block;
+      background: var(--btn-bg);
+      color: var(--btn-text);
+      padding: 12px 22px;
+      border-radius: 8px;
+      font-weight: 500;
+      font-size: 0.975rem;
+      text-decoration: none;
+      transition: background-color 0.2s ease;
+    }
+    .button:hover { background: var(--accent); }
+
+    /* Kontakt-Links nebeneinander */
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 28px;
+      font-weight: 500;
+    }
+
+    /* Hält Wörter wie "E-Mail" auf dem Handy in einer Zeile */
+    .nowrap { white-space: nowrap; }
+
+    /* Farbe, wenn man Text mit der Maus markiert */
+    ::selection { background: var(--accent); color: var(--bg); }
+
+    /* ========================================================
+       FUSSZEILE
+       ======================================================== */
+    footer {
+      margin-top: 120px;
+      padding-left: var(--gutter);
+      color: var(--muted);
+      font-size: 0.875rem;
+    }
+
+    /* ========================================================
+       HANDY: alles untereinander, schmalerer Rand
+       ======================================================== */
+    @media (max-width: 760px) {
+      :root {
+        --gutter: 30px;
+        --gap: 64px;
+      }
+      .page { padding: 48px 20px 48px; }
+      .node { grid-template-columns: minmax(0, 1fr); }
+      .node > h2 { margin-bottom: 14px; }
+      .hero + .node { margin-top: 80px; }
+      footer { margin-top: 88px; }
+    }
+
+    /* Wer im System "Bewegung reduzieren" eingestellt hat,
+       sieht die Leiterbahn sofort fertig, ohne Animation. */
+    @media (prefers-reduced-motion: reduce) {
+      .circuit::before,
+      .node:last-child > h2::before { animation: none; }
+      .node:last-child > h2::before { background: var(--accent); }
+      .button { transition: none; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <main class="circuit">
+
+      <!-- ============ KOPFBEREICH ============ -->
+      <header class="node hero">
+        <!-- HIER: Dein Name -->
+        <h1>Emre Incedayi</h1>
+
+        <!-- HIER: Ein Satz, der dich beschreibt -->
+        <p class="lede">
+          Ein Satz darüber, wer du bist und was dich ausmacht.
+        </p>
+      </header>
+
+      <!-- ============ ÜBER MICH ============ -->
+      <section class="node">
+        <h2>Über mich</h2>
+        <div>
+          <!-- HIER: Zwei, drei Sätze über dich. Ganz locker. -->
+          <p>
+            Hier ein paar Sätze über dich – schreib so, wie du auch reden würdest.
+          </p>
+        </div>
+      </section>
+
+      <!-- ============ PROJEKTE ============ -->
+      <section class="node">
+        <h2>Projekte</h2>
+        <!-- HIER: Ersetze die Platzhalter mit echten Projekten.
+             Einen <li>-Block kopieren = ein weiteres Projekt.
+             Einen <li>-Block löschen = ein Projekt weniger. -->
+        <ul class="projects">
+
+          <!-- Projekt 1 -->
+          <li class="project">
+            <h3>Projektname eins</h3>
+            <p class="desc">
+              Kurze Beschreibung in ein, zwei Sätzen: Was ist das Projekt,
+              was war die Aufgabe, und was hast du dabei gemacht?
+            </p>
+            <p class="stack">Werkzeuge: Platzhalter, Platzhalter</p>
+            <a class="more" href="#">Mehr dazu</a>
+          </li>
+
+          <!-- Projekt 2 -->
+          <li class="project">
+            <h3>Projektname zwei</h3>
+            <p class="desc">
+              Noch ein Platzhalter-Text. Beschreibe hier ruhig auch, was
+              du daraus gelernt hast oder was das Besondere daran war.
+            </p>
+            <p class="stack">Werkzeuge: Platzhalter, Platzhalter</p>
+            <a class="more" href="#">Mehr dazu</a>
+          </li>
+
+          <!-- Projekt 3 -->
+          <li class="project">
+            <h3>Projektname drei</h3>
+            <p class="desc">
+              Ein drittes Beispiel. Wenn du kein drittes Projekt hast,
+              lösch diesen Block einfach – zwei reichen völlig.
+            </p>
+            <p class="stack">Werkzeuge: Platzhalter, Platzhalter</p>
+            <a class="more" href="#">Mehr dazu</a>
+          </li>
+
+        </ul>
+      </section>
+
+      <!-- ============ LEBENSLAUF ============ -->
+      <section class="node">
+        <h2>Lebenslauf</h2>
+        <div>
+          <p>Meinen Lebenslauf gibt es hier als PDF zum Herunterladen.</p>
+          <!-- HIER: Lade deine PDF ins Repo (z. B. als "lebenslauf.pdf") und
+               trage unten bei href genau diesen Dateinamen ein.
+               Das "download" sorgt dafür, dass die Datei heruntergeladen
+               statt im Browser geöffnet wird. -->
+          <p>
+            <a class="button" href="lebenslauf.pdf" download>Lebenslauf herunterladen (PDF)</a>
+          </p>
+        </div>
+      </section>
+
+      <!-- ============ KONTAKT ============
+           Dieser Abschnitt sollte der letzte bleiben:
+           Hier endet die Leiterbahn. -->
+      <section class="node">
+        <h2>Kontakt</h2>
+        <div>
+          <p>Schreib mir gern – am einfachsten per <span class="nowrap">E-Mail</span>.</p>
+          <!-- HIER: Deine echten Links eintragen.
+               Bei der E-Mail bleibt "mailto:" davor stehen. -->
+          <p class="links">
+            <a href="mailto:deine@email.de">E-Mail</a>
+            <a href="https://github.com/deinname" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://linkedin.com/in/deinname" target="_blank" rel="noopener">LinkedIn</a>
+          </p>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ============ FUSSZEILE ============ -->
+    <footer>
+      <!-- HIER: Jahr und Name anpassen -->
+      © 2026 Emre Incedayi
+    </footer>
+
+  </div>
+</body>
+</html>
