@@ -12,9 +12,9 @@
   - Zum Ansehen: Datei einfach doppelklicken, sie öffnet im Browser.
   - Zum Bearbeiten: Datei in einem Texteditor öffnen (VS Code,
     Notepad++, oder zur Not der normale Editor).
-  - Die Schriften liegen im Ordner "fonts" direkt neben dieser Datei.
-    Der Ordner muss mit ins Repo, sonst fällt die Seite auf
-    Standardschriften zurück.
+  - Die Schriften (newsreader.woff2, instrument-sans.woff2) liegen
+    direkt neben dieser Datei im Repo. Nicht löschen, sonst fällt
+    die Seite auf Standardschriften zurück. OFL.txt ist deren Lizenz.
   ============================================================
 -->
 <html lang="de">
@@ -34,9 +34,10 @@
   <!-- Beschreibung für Suchmaschinen (erscheint unter dem Titel bei Google) -->
   <meta name="description" content="Persönliche Seite von Emre Incedayi – Elektrotechnik-Student. Projekte, Lebenslauf und Kontakt.">
 
-  <!-- Farbe der Browser-Leiste auf dem Handy (hell und dunkel) -->
-  <meta name="theme-color" content="#F0EDE5" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#181714" media="(prefers-color-scheme: dark)">
+  <!-- Farbe der Browser-Leiste auf dem Handy -->
+  <meta name="theme-color" content="#F0EDE5">
+  <!-- Die Seite ist immer hell – auch wenn das Gerät auf dunkel steht -->
+  <meta name="color-scheme" content="only light">
 
   <!-- Open Graph: Vorschau beim Teilen des Links (WhatsApp, LinkedIn, Discord …) -->
   <meta property="og:type" content="website">
@@ -49,13 +50,13 @@
   <meta name="twitter:card" content="summary_large_image">
 
   <!-- Die Schriften schon früh laden, damit nichts "springt" -->
-  <link rel="preload" href="fonts/newsreader.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="fonts/instrument-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="newsreader.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="instrument-sans.woff2" as="font" type="font/woff2" crossorigin>
 
   <style>
     /* ========================================================
        SCHRIFTEN
-       Beide Schriften liegen im eigenen Repo (Ordner "fonts")
+       Beide Schriften liegen im eigenen Repo (neben dieser Datei)
        statt bei Google. So werden keine Besucherdaten an
        Google übertragen – wichtig wegen der DSGVO.
        - Newsreader: Serifenschrift für Name & Überschriften
@@ -63,14 +64,14 @@
        ======================================================== */
     @font-face {
       font-family: "Newsreader";
-      src: url("fonts/newsreader.woff2") format("woff2");
+      src: url("newsreader.woff2") format("woff2");
       font-weight: 200 800;
       font-style: normal;
       font-display: swap;
     }
     @font-face {
       font-family: "Instrument Sans";
-      src: url("fonts/instrument-sans.woff2") format("woff2");
+      src: url("instrument-sans.woff2") format("woff2");
       font-weight: 400 700;
       font-style: normal;
       font-display: swap;
@@ -100,27 +101,10 @@
       --h1:     clamp(2.9rem, 8vw, 4.6rem);  /* Größe des Namens */
     }
 
-    /* ========================================================
-       DARK MODE
-       Gilt automatisch, wenn das Gerät auf "dunkles Design"
-       gestellt ist. Es werden NUR die Farben überschrieben.
-       ======================================================== */
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg:       #181714;   /* warmes Fast-Schwarz */
-        --ink:      #ECE8DF;   /* Text in Papierfarbe */
-        --muted:    #A39E93;
-        --line:     #34312B;
-        --accent:   #E0946A;   /* helleres Kupfer, damit es auf Dunkel leuchtet */
-        --btn-bg:   #ECE8DF;
-        --btn-text: #181714;
-      }
-    }
-
     /* Rahmen zählen zur Größe dazu – auch bei den Pads (::before/::after) */
     *, *::before, *::after { box-sizing: border-box; }
 
-    html { color-scheme: light dark; }
+    html { color-scheme: only light; }
 
     body {
       margin: 0;
